@@ -6,6 +6,6 @@ wirtten by Al Sweigart. All projects will contain 3 files:
 2. Second file is going to be README
 3. Last one is going to be my attempt to write project all by myself
 
-I will stick to the instructions provided in book. Firstly I will rewrite project from book and than try to do it myself.
+I will stick to the instructions provided in book. Firstly I will rewrite project from book and than try to do it myself. I'm doing it mainly to train my Git skills.
 
 Enjoy! :smile:
