@@ -1,7 +1,5 @@
 import random
 
-from Project_1.project_1 import MAX_GUESSES
-
 NUM_OF_DIGITS = 3
 GUESSES = 10
 
@@ -15,7 +13,7 @@ def main():
 
     num_of_tries = 0
     while True:
-        if num_of_tries != MAX_GUESSES:
+        if num_of_tries != GUESSES:
             guess = getGuess()
             num_of_tries += 1
 
