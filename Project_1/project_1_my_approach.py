@@ -6,22 +6,39 @@ GUESSES = 10
 def main():
     print(f"""Welcome to Bagle game!
     I have a three digit number in my mind, try to guess it !
-    You have {GUESSES} number of guesses.
+    You have {GUESSES} tries.
     Good luck!
-    """)
-    secNum = generateNumber()
+    
+    Hints:
+    "pico" means one digit is correct but it's placed wrong
+    "fermi" means one digit is correct and it's in the right place
+    "bagel" means none of the digits are correct\n""")
 
-    num_of_tries = 0
     while True:
-        if num_of_tries != GUESSES:
+        secNum = generateNumber()
+        num_of_guesses = 1
+
+        while num_of_guesses <= GUESSES:
+            print(f"Try number {num_of_guesses}")
             guess = getGuess()
-            num_of_tries += 1
+            num_of_guesses += 1
 
+            if guess != secNum:
+                hints = "".join(giveHints(secNum, guess))
+                print(hints)
+            else:
+                print("Congratulations!")
+                break
 
-
-
+            if num_of_guesses > GUESSES:
+                print(f"You used all of your tries. The correct answer is {secNum}")
+    
+        print("Do you want to play again? (y/n)")
+        if not input("> ").lower().startswith("y"):
+            break
 
 def getGuess():
+    """Function to get guess from player"""
     guess = input("> ")
     
     while True:
@@ -47,25 +64,14 @@ def generateNumber():
 def giveHints(generatedNumber, guess):
     """Function to generate hints based on given guess"""
     hints = []
-    for i in enumerate(guess):
+    for i in range(len(guess)):
         if guess[i] == generatedNumber[i]:
             hints.append("Fermi")
         elif guess[i] in generatedNumber:
             hints.append("Pico")
-        else:
+        if len(guess) == 0:
             return "Bagle"
     return hints
 
-
-
-
-
-"""
-Plan
-1. Wytłumacz o co chodzi w grze
-2. funkcja do losowania liczby (najlepiej bez powtórzeń)
-3. funkcja do pobierania odpowiedzi
-4. sprawdzać aby dane się zgadzały
-5. funkcja do printowania podpowiedzi
-6. Mainloop ze sprawdzaniem odpowiedzi
-"""
+if __name__ == "__main__":
+    main()
